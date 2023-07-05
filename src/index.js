@@ -1,6 +1,5 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import { mkdirp } from 'mkdirp'
 import * as url from 'url'
 import _ from 'underscore'
 
@@ -117,7 +116,7 @@ var webfont = function(options, done) {
 }
 
 function writeFile(content, dest) {
-	mkdirp.sync(path.dirname(dest))
+	fs.mkdirSync(path.dirname(dest), { recursive: true })
 	fs.writeFileSync(dest, content)
 }
 
