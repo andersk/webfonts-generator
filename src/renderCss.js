@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import * as crypto from 'crypto'
+import * as url from 'url'
 import _ from 'underscore'
 import handlebars from 'handlebars'
-import urlJoin from 'url-join'
 
 /** Caclulates hash based on options and source SVG files */
 var calcHash = function(options) {
@@ -24,7 +24,7 @@ var makeUrls = function(options) {
 	var baseUrl = options.cssFontsUrl && options.cssFontsUrl.replace(/\\/g, '/')
 	var urls = _.map(options.types, function(type) {
 		var fontName = options.fontName + '.' + type + '?' + hash
-		return baseUrl ? urlJoin(baseUrl, fontName) : fontName
+		return baseUrl ? url.resolve(baseUrl.replace(/\/*$/, '/'), fontName) : fontName
 	})
 	return _.object(options.types, urls)
 }

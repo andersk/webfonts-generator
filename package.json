@@ -34,8 +34,7 @@
     "ttf2eot": "^3.0.0",
     "ttf2woff": "^3.0.0",
     "ttf2woff2": "^6.0.1",
-    "underscore": "^1.9.1",
-    "url-join": "^5.0.0"
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "file-type": "^20.1.0",
