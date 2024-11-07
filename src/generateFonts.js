@@ -85,7 +85,7 @@ var generators = {
 			var formatOptions = options.formatOptions['ttf'] || {};
 			formatOptions.ts = 1484141760000;
 			var font = svg2ttf(svgFont, formatOptions)
-			font = new Buffer(font.buffer)
+			font = Buffer.from(font.buffer)
 			done(null, font)
 		}
 	},
@@ -94,7 +94,7 @@ var generators = {
 		deps: ['ttf'],
 		fn: function(options, ttfFont, done) {
 			var font = ttf2woff(new Uint8Array(ttfFont), options.formatOptions['woff'])
-			font = new Buffer(font.buffer)
+			font = Buffer.from(font.buffer)
 			done(null, font)
 		}
 	},
@@ -103,7 +103,7 @@ var generators = {
 		deps: ['ttf'],
 		fn: function(options, ttfFont, done) {
 			var font = ttf2woff2(new Uint8Array(ttfFont), options.formatOptions['woff2'])
-			font = new Buffer(font.buffer)
+			font = Buffer.from(font.buffer)
 			done(null, font)
 		}
 	},
@@ -112,7 +112,7 @@ var generators = {
 		deps: ['ttf'],
 		fn: function(options, ttfFont, done) {
 			var font = ttf2eot(new Uint8Array(ttfFont), options.formatOptions['eot'])
-			font = new Buffer(font)
+			font = Buffer.from(font)
 			done(null, font)
 		}
 	}
