@@ -1,9 +1,8 @@
-var fs = require('fs')
-var path = require('path')
-var crypto = require('crypto')
-var _ = require('underscore')
-var handlebars = require('handlebars')
-var urlJoin = require('url-join')
+import * as fs from 'fs'
+import * as crypto from 'crypto'
+import _ from 'underscore'
+import handlebars from 'handlebars'
+import urlJoin from 'url-join'
 
 /** Caclulates hash based on options and source SVG files */
 var calcHash = function(options) {
@@ -81,4 +80,4 @@ var renderCss = function(options, urls) {
 	return template(ctx)
 }
 
-module.exports = renderCss
+export default renderCss

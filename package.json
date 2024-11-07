@@ -2,6 +2,7 @@
   "name": "@vusion/webfonts-generator",
   "version": "0.8.0",
   "description": "Generator of webfonts from svg icons",
+  "type": "module",
   "main": "src/index.js",
   "directories": {
     "test": "tests"

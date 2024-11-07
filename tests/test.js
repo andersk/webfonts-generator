@@ -1,18 +1,19 @@
-var fs = require('fs')
-var path = require('path')
-var _ = require('underscore')
-var assert = require('assert')
+import * as fs from 'fs'
+import * as path from 'path'
+import * as url from 'url'
+import _ from 'underscore'
+import assert from 'assert'
 
-var sass = require('node-sass')
-var Q = require('q')
-var readChunk = require('read-chunk')
-var FileType = require('file-type')
+import * as sass from 'node-sass'
+import Q from 'q'
+import readChunk from 'read-chunk'
+import FileType from 'file-type'
 
-var webfontsGenerator = require('../src/index')
+import webfontsGenerator from '../src/index.js'
 
 describe('webfont', function() {
-	var SRC = path.join(__dirname, 'src')
-	var DEST = path.join(__dirname, 'dest')
+	var SRC = url.fileURLToPath(new URL('src', import.meta.url))
+	var DEST = url.fileURLToPath(new URL('dest', import.meta.url))
 
 	var FILES = _.map(fs.readdirSync(SRC), function(file) {
 		return path.join(SRC, file)
@@ -178,7 +179,7 @@ describe('webfont', function() {
 	})
 
 	describe('custom templates', function() {
-		var TEMPLATE = path.join(__dirname, 'customTemplate.hbs')
+		var TEMPLATE = url.fileURLToPath(new URL('customTemplate.hbs', import.meta.url))
 		var TEMPLATE_OPTIONS = {
 			option: 'TEST'
 		}
@@ -213,7 +214,7 @@ describe('webfont', function() {
 	})
 
 	describe('custom context', function() {
-		var TEMPLATE = path.join(__dirname, 'customContextTemplate.hbs')
+		var TEMPLATE = url.fileURLToPath(new URL('customContextTemplate.hbs', import.meta.url))
 		var TEMPLATE_OPTIONS = {
 			option: 'TEST'
 		}
@@ -252,8 +253,8 @@ describe('webfont', function() {
 	});
 
 	describe('scss template', function() {
-		var TEST_SCSS_SINGLE = path.join(__dirname, 'scss', 'singleFont.scss')
-		var TEST_SCSS_MULTIPLE = path.join(__dirname, 'scss', 'multipleFonts.scss')
+		var TEST_SCSS_SINGLE = url.fileURLToPath(new URL('scss/singleFont.scss', import.meta.url))
+		var TEST_SCSS_MULTIPLE = url.fileURLToPath(new URL('scss/multipleFonts.scss', import.meta.url))
 
 		it('creates mixins that can be used to create icons styles', function(done) {
 			var DEST_CSS = path.join(DEST, FONT_NAME + '.scss')

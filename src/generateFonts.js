@@ -1,12 +1,12 @@
-var fs = require('fs')
-var _ = require('underscore')
-var Q = require('q')
+import * as fs from 'fs'
+import _ from 'underscore'
+import Q from 'q'
 
-var SVGIcons2SVGFontStream = require('svgicons2svgfont')
-var svg2ttf = require('svg2ttf')
-var ttf2woff = require('ttf2woff')
-var ttf2woff2 = require('ttf2woff2')
-var ttf2eot = require('ttf2eot')
+import SVGIcons2SVGFontStream from 'svgicons2svgfont'
+import svg2ttf from 'svg2ttf'
+import ttf2woff from 'ttf2woff'
+import ttf2woff2 from 'ttf2woff2'
+import ttf2eot from 'ttf2eot'
 
 /**
  * Generators for files of different font types.
@@ -153,4 +153,4 @@ var generateFonts = function(options) {
 	})
 }
 
-module.exports = generateFonts
+export default generateFonts

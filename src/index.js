@@ -1,13 +1,14 @@
-var fs = require('fs')
-var path = require('path')
-var mkdirp = require('mkdirp')
-var _ = require('underscore')
+import * as fs from 'fs'
+import * as path from 'path'
+import mkdirp from 'mkdirp'
+import * as url from 'url'
+import _ from 'underscore'
 
-var generateFonts = require('./generateFonts')
-var renderCss = require('./renderCss')
-var renderHtml = require('./renderHtml')
+import generateFonts from './generateFonts.js'
+import renderCss from './renderCss.js'
+import renderHtml from './renderHtml.js'
 
-var TEMPLATES_DIR = path.join(__dirname, '..', 'templates')
+var TEMPLATES_DIR = url.fileURLToPath(new URL('../templates', import.meta.url))
 var TEMPLATES = {
 	css: path.join(TEMPLATES_DIR, 'css.hbs'),
 	scss: path.join(TEMPLATES_DIR, 'scss.hbs'),
@@ -137,4 +138,4 @@ function writeResult(fonts, options) {
 
 webfont.templates = TEMPLATES
 
-module.exports = webfont
+export default webfont

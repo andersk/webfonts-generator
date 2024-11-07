@@ -1,15 +1,16 @@
-var fs = require('fs')
-var path = require('path')
-var _ = require('underscore')
+import * as fs from 'fs'
+import * as path from 'path'
+import * as url from 'url'
+import _ from 'underscore'
 
-var webfontsGenerator = require('../src/index')
+import webfontsGenerator from '../src/index.js'
 
-var SRC = path.join(__dirname, 'src')
+var SRC = url.fileURLToPath(new URL('src', import.meta.url))
 var FILES = _.map(fs.readdirSync(SRC), function(file) {
 	return path.join(SRC, file)
 })
 var OPTIONS = {
-	dest: path.join(__dirname, '..', 'temp'),
+	dest: url.fileURLToPath(new URL('../temp', import.meta.url)),
 	files: FILES,
 	fontName: 'fontName',
 	types: ['svg', 'ttf', 'woff', 'woff2', 'eot'],

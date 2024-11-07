@@ -20,7 +20,7 @@ npm install --save-dev @vusion/webfonts-generator
 ## Usage
 
 ```js
-const webfontsGenerator = require('@vusion/webfonts-generator');
+import webfontsGenerator from '@vusion/webfonts-generator';
 const file = fs.createReadStream('src/close.svg');
 file.metadata = {
 	name: 'close',

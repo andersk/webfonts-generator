@@ -1,9 +1,9 @@
-var fs = require('fs')
-var path = require('path')
-var _ = require('underscore')
-var handlebars = require('handlebars')
+import * as fs from 'fs'
+import * as path from 'path'
+import _ from 'underscore'
+import handlebars from 'handlebars'
 
-var renderCss = require('./renderCss')
+import renderCss from './renderCss.js'
 
 handlebars.registerHelper('removePeriods', function (selector) {
 	return selector.replace(/\./, '');
@@ -34,4 +34,4 @@ var renderHtml = function(options, urls) {
 	return template(ctx)
 }
 
-module.exports = renderHtml
+export default renderHtml
