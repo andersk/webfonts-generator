@@ -5,7 +5,7 @@ import { promisify } from 'util'
 import _ from 'underscore'
 import assert from 'assert'
 
-import * as sass from 'node-sass'
+import * as sass from 'sass'
 import { readChunkSync } from 'read-chunk'
 import { fileTypeFromBuffer } from 'file-type'
 
@@ -264,9 +264,7 @@ describe('webfont', function() {
 			})
 			webfontsGenerator(options, function(err) {
 				if (err) return done(new Error(err))
-				var rendered = sass.renderSync({
-					file: TEST_SCSS_SINGLE
-				})
+				var rendered = sass.compile(TEST_SCSS_SINGLE)
 				var css = rendered.css.toString()
 				assert(css.indexOf(FONT_NAME) !== -1)
 				done(null)
@@ -294,9 +292,7 @@ describe('webfont', function() {
 			var generate2 = promisify(webfontsGenerator)(options2)
 
 			return Promise.all([generate1, generate2]).then(function() {
-				var rendered = sass.renderSync({
-					file: TEST_SCSS_MULTIPLE
-				})
+				var rendered = sass.compile(TEST_SCSS_MULTIPLE)
 				var css = rendered.css.toString()
 				assert(css.indexOf(FONT_NAME) !== -1)
 				assert(css.indexOf(FONT_NAME_2) !== -1)
