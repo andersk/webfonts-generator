@@ -39,7 +39,6 @@
   "devDependencies": {
     "file-type": "^20.1.0",
     "mocha": "^11.1.0",
-    "read-chunk": "^5.0.0",
     "sass": "^1.84.0"
   }
 }

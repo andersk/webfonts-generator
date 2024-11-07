@@ -1028,11 +1028,6 @@ randombytes@^2.1.0:
   dependencies:
     safe-buffer "^5.1.0"
 
-read-chunk@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/read-chunk/-/read-chunk-5.0.0.tgz#ed653bb18d89029bc076f7b981717c1b8b5b066b"
-  integrity sha512-kEiU3Y6ET/R1CEpS29aupxwGd19P4y3Y50x0CNFI5j8jowtgHBlNVLH/z5KjjBT5pxixIb7eTeIMJVKTm200cw==
-
 readable-stream@^3.4.0:
   version "3.6.2"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.6.2.tgz#56a9b36ea965c00c5a93ef31eb111a0f11056967"

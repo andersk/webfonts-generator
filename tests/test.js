@@ -6,8 +6,7 @@ import _ from 'underscore'
 import assert from 'assert'
 
 import * as sass from 'sass'
-import { readChunkSync } from 'read-chunk'
-import { fileTypeFromBuffer } from 'file-type'
+import { fileTypeFromFile } from 'file-type'
 
 import webfontsGenerator from '../src/index.js'
 
@@ -50,8 +49,7 @@ describe('webfont', function() {
 
 				var DETECTABLE = ['ttf', 'woff', 'woff2', 'eot']
 				if (_.contains(DETECTABLE, type)) {
-					var chunk = readChunkSync(filepath, { startPosition: 0, length: 262 })
-					var filetype = await fileTypeFromBuffer(chunk)
+					var filetype = await fileTypeFromFile(filepath)
 					assert.equal(type, filetype && filetype.ext, 'ttf filetype is correct')
 				}
 			}
