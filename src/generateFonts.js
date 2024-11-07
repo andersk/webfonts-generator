@@ -1,6 +1,6 @@
 import * as fs from 'fs'
+import { promisify } from 'util'
 import _ from 'underscore'
-import Q from 'q'
 
 import { SVGIcons2SVGFontStream } from 'svgicons2svgfont'
 import svg2ttf from 'svg2ttf'
@@ -134,9 +134,8 @@ var generateFonts = function(options) {
 
 		var gen = generators[type]
 		var depsTasks = _.map(gen.deps, makeGenTask)
-		var task = Q.all(depsTasks).then(function(depsFonts) {
-			var args = [options].concat(depsFonts)
-			return Q.nfapply(gen.fn, args)
+		var task = Promise.all(depsTasks).then(function(depsFonts) {
+			return promisify(gen.fn)(options, ...depsFonts)
 		})
 		genTasks[type] = task
 		return task
@@ -148,7 +147,7 @@ var generateFonts = function(options) {
 		makeGenTask(type)
 	}
 
-	return Q.all(_.values(genTasks)).then(function(results) {
+	return Promise.all(_.values(genTasks)).then(function(results) {
 		return _.object(_.keys(genTasks), results)
 	})
 }

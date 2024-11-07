@@ -1,11 +1,11 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import * as url from 'url'
+import { promisify } from 'util'
 import _ from 'underscore'
 import assert from 'assert'
 
 import * as sass from 'node-sass'
-import Q from 'q'
 import { readChunkSync } from 'read-chunk'
 import { fileTypeFromBuffer } from 'file-type'
 
@@ -290,10 +290,10 @@ describe('webfont', function() {
 				files: [path.join(SRC, 'back.svg')]
 			})
 
-			var generate1 = Q.nfcall(webfontsGenerator, options1)
-			var generate2 = Q.nfcall(webfontsGenerator, options2)
+			var generate1 = promisify(webfontsGenerator)(options1)
+			var generate2 = promisify(webfontsGenerator)(options2)
 
-			return Q.all([generate1, generate2]).then(function() {
+			return Promise.all([generate1, generate2]).then(function() {
 				var rendered = sass.renderSync({
 					file: TEST_SCSS_MULTIPLE
 				})

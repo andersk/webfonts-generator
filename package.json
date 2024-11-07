@@ -29,7 +29,6 @@
   },
   "dependencies": {
     "handlebars": "^4.0.11",
-    "q": "^1.1.2",
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^15.0.0",
     "ttf2eot": "^3.0.0",
