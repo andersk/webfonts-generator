@@ -300,4 +300,4 @@ webfontsGenerator({
 
 ## License
 
-Public domain, see the `LICENCE` file.
+Public domain, see the `LICENSE` file.
