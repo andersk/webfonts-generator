@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import _ from 'underscore'
 import Q from 'q'
 
-import SVGIcons2SVGFontStream from 'svgicons2svgfont'
+import { SVGIcons2SVGFontStream } from 'svgicons2svgfont'
 import svg2ttf from 'svg2ttf'
 import ttf2woff from 'ttf2woff'
 import ttf2woff2 from 'ttf2woff2'
@@ -22,7 +22,7 @@ import ttf2eot from 'ttf2eot'
 var generators = {
 	svg: {
 		fn: function(options, done) {
-			var font = new Buffer(0)
+			var font = ''
 			var svgOptions = _.pick(options,
 				'fontName',
 				'fontId',
@@ -47,11 +47,11 @@ var generators = {
 
 			var fontStream = new SVGIcons2SVGFontStream(svgOptions)
 				.on('data', function(data) {
-					font = Buffer.concat([font, data])
+					font += data
 				})
 				.on('error', done)
 				.on('end', function() {
-					done(null, font.toString())
+					done(null, font)
 				})
 
 			_.each(options.files, function(file, idx) {

@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import mkdirp from 'mkdirp'
+import { mkdirp } from 'mkdirp'
 import * as url from 'url'
 import _ from 'underscore'
 
